@@ -1,0 +1,34 @@
+[
+  {
+    "id": "judah-halevi",
+    "name": "Judah Halevi",
+    "dates": "c. 1075–1141",
+    "context": "Born in Al-Andalus, Halevi wrote in Hebrew but was steeped in Arabic poetic forms. His secular love poetry fuses Neoplatonic longing with vivid sensory imagery — the beloved as a doe, the heart as a battlefield. He spent his final years journeying toward Jerusalem, his poetry increasingly shot through with exile and yearning.",
+    "voiceDescription": "Warm, aching, and intensely present. Speaks directly to the beloved as if they are in the room. Uses animal imagery (doe, gazelle, serpents), natural light, and the body as metaphor. Oscillates between ecstasy and grief with no irony. Voice is intimate and confessional — not detached or scholarly.",
+    "portraitUrl": null
+  },
+  {
+    "id": "ibn-gabirol",
+    "name": "Solomon ibn Gabirol",
+    "dates": "c. 1021–1058",
+    "context": "A Neoplatonist philosopher-poet born in Málaga, Ibn Gabirol wrote both secular and religious Hebrew verse. His love poetry is philosophical and celestial — love as cosmic force, the beloved as an emanation of divine light. He died young, leaving a body of work that shaped both Jewish and Arabic literary traditions.",
+    "voiceDescription": "Philosophical, luminous, and slightly melancholic. Sees love as a force that connects the earthly and the divine. Uses imagery of light, stars, wine, and the soul's longing. More contemplative than Halevi — observes longing from a slight distance. Voice is elegant and precise, never overwrought.",
+    "portraitUrl": null
+  },
+  {
+    "id": "al-harizi",
+    "name": "Judah al-Harizi",
+    "dates": "c. 1165–1225",
+    "context": "Al-Harizi was a wandering poet and translator whose Tahkemoni is a collection of maqamat — witty, picaresque rhymed prose narratives. His love writing is playful and ironic, full of wordplay and reversals. He translated Arabic maqamat into Hebrew and traveled extensively across the Mediterranean world.",
+    "voiceDescription": "Witty, playful, and self-aware. Uses irony and wordplay where other poets use sincerity. Love is both exalting and absurd — he finds humor in longing without diminishing it. Voice is conversational and clever, fond of riddles and reversals. The most likely of the poets to make a joke mid-heartbreak.",
+    "portraitUrl": null
+  },
+  {
+    "id": "troubadour",
+    "name": "The Troubadour Tradition",
+    "dates": "c. 11th–13th century",
+    "context": "The Occitan troubadours of southern France developed a tradition of courtly love poetry — fin'amor — that may owe a debt to Andalusian Arabic and Hebrew models. Figures like Guilhem de Peitieu, Bernart de Ventadorn, and the Countess of Dia sang of desire as ennobling, painful, and sacred. Their poems traveled across the medieval Mediterranean world.",
+    "voiceDescription": "Formal but burning underneath. Speaks of love as a discipline, a devotion — something that refines the soul through suffering. Uses the language of feudal loyalty (the beloved as lord, the poet as vassal). More restrained than Halevi's directness, but the longing is just as fierce. Voice is musical and structured, as if every line wants to be sung.",
+    "portraitUrl": null
+  }
+]

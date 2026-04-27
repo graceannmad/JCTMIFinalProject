@@ -1,0 +1,70 @@
+{
+  "poet": {
+    "id": "judah-halevi",
+    "name": "Judah Halevi",
+    "dates": "c. 1075–1141",
+    "context": "Born in Al-Andalus, Halevi wrote in Hebrew but was steeped in Arabic poetic forms. His secular love poetry fuses Neoplatonic longing with vivid sensory imagery — the beloved as a doe, the heart as a battlefield. He spent his final years journeying toward Jerusalem, his poetry increasingly shot through with exile and yearning.",
+    "voiceDescription": "Warm, aching, and intensely present.",
+    "portraitUrl": null
+  },
+  "matchExplanation": "I have been reading your music, and I recognize myself in it — that same ache that lives in the throat, the way a song can hold an absence more precisely than any speech. The artists you love know what I knew in Al-Andalus: that longing is not a failure of love but its truest expression. When I wrote 'I do not know if my heart has come to a stop between my ribs, or else has wandered off with you,' I meant exactly what your music means. You feel things the way the body feels — completely, without reservation. I have been waiting nine centuries for someone like you to find me.",
+  "historicalContext": "Judah Halevi (c. 1075–1141) was one of the greatest Hebrew poets of medieval Al-Andalus, the Muslim-ruled Iberian Peninsula where Jewish, Muslim, and Christian cultures met and transformed each other. Writing in Hebrew but fluent in Arabic poetic conventions, he produced secular love poetry of startling sensory intensity alongside devotional and philosophical verse. His love poems often feature the beloved as a gazelle or doe — images drawn from the Arabic tradition — and explore desire as something beautiful and fatal at once.",
+  "playlist": [
+    {
+      "title": "I Know the End",
+      "artist": "Phoebe Bridgers",
+      "spotifyUrl": "https://open.spotify.com/track/1ywGSAge9YGfIFLNMRWzse",
+      "justification": "This song knows what I know — that love and loss are the same motion, that the end of something is folded inside its beginning. Bridgers builds the way I built: from a single intimate voice to something vast and uncontainable. I wrote of serpents that guard the beloved's cheeks; she writes of the end of the world as a kind of homecoming. We understand each other.",
+      "poemReference": "I do not know if my heart has come to a stop between my ribs, or else has wandered off with you. — Song of Farewell"
+    },
+    {
+      "title": "Motion Picture Soundtrack",
+      "artist": "Radiohead",
+      "spotifyUrl": "https://open.spotify.com/track/5vLZUlHBKqRySfFB9tBJMv",
+      "justification": "There is a quality of sacred mourning here that I recognize from my own religious poetry — the beloved becomes indistinguishable from the divine, and loss becomes a form of worship. Thom Yorke reaches for transcendence the way I reached for Jerusalem in my final years: knowing the distance is vast, going anyway.",
+      "poemReference": "The day you leave me, your going will be my ruin. — The Sensitive Doe"
+    },
+    {
+      "title": "Death With Dignity",
+      "artist": "Sufjan Stevens",
+      "spotifyUrl": "https://open.spotify.com/track/0M3swDqqHEbNVxGNj2bTsF",
+      "justification": "Stevens knows that grief is a kind of precision — the more specific the detail, the more universal the feeling. I used gazelles and lances and burning cheeks; he uses spirit and love and the careful naming of what is lost. The method is medieval. The wound is the same wound.",
+      "poemReference": null
+    },
+    {
+      "title": "Holocene",
+      "artist": "Bon Iver",
+      "spotifyUrl": "https://open.spotify.com/track/3Rbp7gBEDJFhpkAUeBIuNi",
+      "justification": "The feeling of being made small by vastness — snow, sky, geological time — and finding that smallness clarifying rather than terrifying. I felt this on my journey toward Jerusalem, watching the sea. Vernon reaches the same place through landscape that I reached through pilgrimage.",
+      "poemReference": null
+    },
+    {
+      "title": "Liability",
+      "artist": "Lorde",
+      "spotifyUrl": "https://open.spotify.com/track/1Jb47R5BFOUTxNGJJAGXcU",
+      "justification": "The beloved who is too much for the world, who is told their love is a weight — I know this from the other direction. I was the one who loved too fiercely. Lorde sings from inside that feeling and refuses to apologize for it. She is right not to.",
+      "poemReference": "She ensnared my heart — and felt no shame at all. — The Sensitive Doe"
+    },
+    {
+      "title": "Casimir Pulaski Day",
+      "artist": "Sufjan Stevens",
+      "spotifyUrl": "https://open.spotify.com/track/6PbgicWmjJDHFQqINQpO8T",
+      "justification": "Religious devotion tangled completely with human love, until you cannot separate the grief for God from the grief for a person. This is the problem I spent my life with. Stevens has not solved it either, but he names it with such exactness that it becomes bearable.",
+      "poemReference": null
+    },
+    {
+      "title": "White Flag",
+      "artist": "Joseph",
+      "spotifyUrl": "https://open.spotify.com/track/5f7SmQVVJNsPJIVeYXEaBx",
+      "justification": "Three voices in harmony, each one a different register of the same feeling. In my world, the great poems were sung. This song knows that harmony is not agreement but three kinds of love braided together, holding.",
+      "poemReference": null
+    },
+    {
+      "title": "First Day of My Life",
+      "artist": "Bright Eyes",
+      "spotifyUrl": "https://open.spotify.com/track/3bBtnO1FkWoLLVymFRuHSP",
+      "justification": "Simple, direct, true. No ornament, no distance. This is the voice I used in my shorter poems — the ones that say only the essential thing. Oberst says 'you are the best thing that's ever been mine.' I said 'she is the sun; she has her own radiance.' Same poem. Different century.",
+      "poemReference": "She has no need of spring-water — she has my two eyes; nor of the sun — she has her own radiance. — The Laundress"
+    }
+  ]
+}
