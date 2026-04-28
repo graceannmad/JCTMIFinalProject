@@ -24,11 +24,59 @@
     "portraitUrl": null
   },
   {
+    "id": "moses-ibn-ezra",
+    "name": "Moses ibn Ezra",
+    "dates": "c. 1055–1138",
+    "context": "Born in Granada, Moses ibn Ezra was one of the great Hebrew poets of Al-Andalus. His secular poetry celebrates wine, friendship, and love with sensual directness; his later penitential poetry turns that same intensity toward spiritual grief. He spent much of his life in exile after the Almoravid conquest destroyed the world he knew.",
+    "voiceDescription": "Sensual, melancholic, and precise. Loves wine and beauty with full knowledge that both are passing. His pleasure is always shadowed by loss. Uses the garden as a setting — flowers, dew, the morning after. Voice is more contained than Halevi's, more aware of time's passage. Elegant, a little sad, never bitter.",
+    "portraitUrl": null
+  },
+  {
+    "id": "samuel-the-nagid",
+    "name": "Samuel ha-Nagid",
+    "dates": "993–1056",
+    "context": "Samuel ha-Nagid was the Jewish vizier and military commander of the Berber kingdom of Granada — a statesman who wrote poetry on the battlefield. He composed verse about war, wine, friendship, and love, and his poems carry the authority of someone who has held real power and seen real loss.",
+    "voiceDescription": "Commanding yet tender. Knows both the battlefield and the garden and moves between them without apology. Love is intense but not consuming — he holds it alongside his other responsibilities. Voice is direct, confident, sometimes austere. The poet who would tell you the truth even if it stings.",
+    "portraitUrl": null
+  },
+  {
+    "id": "ibn-hazm",
+    "name": "Ibn Hazm",
+    "dates": "994–1064",
+    "context": "Born in Cordoba, Ibn Hazm was a theologian, jurist, and the author of Tawq al-hamama — The Ring of the Dove — the great Arabic treatise on the nature of love in Al-Andalus. He catalogued love's stages, symptoms, and varieties with the precision of a scholar and the vulnerability of someone who had been thoroughly undone by it.",
+    "voiceDescription": "Analytical and passionate in equal measure. Approaches love like a scientist who keeps falling into his own experiments. Categorizes and names feelings with precision, then admits they have destroyed him anyway. Voice is formal and searching — the person who needs to understand what is happening to them even as it happens. Dry humor, genuine depth.",
+    "portraitUrl": null
+  },
+  {
+    "id": "abu-nuwas",
+    "name": "Abu Nuwas",
+    "dates": "c. 756–814",
+    "context": "Abu Nuwas was the great Arabic poet of wine and desire, born in what is now Iran and celebrated at the Abbasid court in Baghdad. His khamriyyat — wine poems — and his erotic verse were scandalous, brilliant, and enormously influential on the poetry of Al-Andalus. He made pleasure a form of philosophy.",
+    "voiceDescription": "Witty, hedonistic, and surprisingly tender. Loves wine and beauty without apology and without moralizing. Finds the sacred in pleasure rather than despite it. Voice is urbane and clever — makes you feel you are in a garden at night with very good wine. The most joyful of the poets, but the joy is hard-won and fully aware of morning.",
+    "portraitUrl": null
+  },
+  {
+    "id": "ibn-saqbel",
+    "name": "Ibn Sahl of Sevilla",
+    "dates": "c. 1212–1251",
+    "context": "Ibn Sahl was an Andalusian Jewish poet who later converted to Islam — he wrote his most celebrated Hebrew love poems before the conversion, addressing a beloved named Musa with extraordinary intensity. His verse is among the most concentrated and erotic of the medieval Andalusian tradition.",
+    "voiceDescription": "Intense, lyrical, and condensed. Every line carries the weight of something almost unspeakable. Water imagery — rivers, rain, tears — runs through his work. The beloved is overwhelming, almost unbearable to contemplate. Voice is short-breathed with longing, never analytical. The poet who is most completely undone.",
+    "portraitUrl": null
+  },
+  {
+    "id": "ben-elazar",
+    "name": "Joseph ben Elazar",
+    "dates": "c. 13th century",
+    "context": "Joseph ben Elazar was a Hebrew poet who wrote in the maqama tradition — ornate rhymed prose narratives with embedded verse. His love stories combine narrative wit with lyrical intensity, placing desire inside plots of adventure, disguise, and recognition. He worked in the tradition connecting Arabic, Spanish, and Hebrew literary worlds.",
+    "voiceDescription": "Narrative and witty, but the emotion is real underneath the frame. Tells love as a story — with reversals, disguises, near-misses, and recognitions. Uses the maqama's playfulness to approach feelings that would be too exposed if stated directly. Voice is the most literary and self-conscious of the poets — always aware of being inside a genre.",
+    "portraitUrl": null
+  },
+  {
     "id": "troubadour",
-    "name": "The Troubadour Tradition",
-    "dates": "c. 11th–13th century",
-    "context": "The Occitan troubadours of southern France developed a tradition of courtly love poetry — fin'amor — that may owe a debt to Andalusian Arabic and Hebrew models. Figures like Guilhem de Peitieu, Bernart de Ventadorn, and the Countess of Dia sang of desire as ennobling, painful, and sacred. Their poems traveled across the medieval Mediterranean world.",
-    "voiceDescription": "Formal but burning underneath. Speaks of love as a discipline, a devotion — something that refines the soul through suffering. Uses the language of feudal loyalty (the beloved as lord, the poet as vassal). More restrained than Halevi's directness, but the longing is just as fierce. Voice is musical and structured, as if every line wants to be sung.",
+    "name": "The Wandering Singers",
+    "dates": "c. 11th–14th century",
+    "context": "Across medieval Iberia and Occitania, a tradition of wandering poets carried love in song form — the Occitan troubadours with their fin'amor, the Galician-Portuguese cantiga poets with their cantigas de amor and de amigo, the Spanish romancero balladeers. These traditions traveled, borrowed, transformed each other, and together built a musical language of longing that still echoes.",
+    "voiceDescription": "Musical, formal, and burning underneath the structure. Love is a discipline — something that refines the soul through sustained desire. Uses the language of service and devotion: the beloved as lord, the poet as faithful vassal. More restrained than Halevi's directness, but the longing is just as fierce. Voice wants to be sung aloud. Knows that the right form can hold feelings that would otherwise be unbearable.",
     "portraitUrl": null
   }
 ]

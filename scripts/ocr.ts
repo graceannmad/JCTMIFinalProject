@@ -12,6 +12,9 @@
  * to merge reviewed files into /data/corpus.json
  */
 
+import { config } from 'dotenv'
+config({ path: '.env.local' })
+
 import Anthropic from '@anthropic-ai/sdk'
 import * as fs from 'fs/promises'
 import * as path from 'path'
@@ -22,12 +25,17 @@ const REVIEWED_DIR = path.join(process.cwd(), 'corpus', 'reviewed')
 
 type OcrChunk = { poemTitle: string; text: string }
 
-const EXTRACT_PROMPT = `Extract only the English text from this document page.
-Ignore all Hebrew, Arabic, or other non-English text completely.
-Preserve poem titles and stanza breaks.
-Return a JSON array where each element represents one poem or section found on the page, with this shape:
+const EXTRACT_PROMPT = `Extract only the actual poem text from this document page.
+Rules:
+- English text only — ignore all Hebrew, Arabic, or other non-English text completely.
+- Poems and verse only — skip introductions, prefaces, scholarly commentary, footnotes, page numbers, headings, and bibliographic information.
+- If a page has both a preamble/introduction AND poems, extract only the poems.
+- If a page is entirely introductory prose with no poems, return an empty array.
+- Preserve poem titles and stanza breaks (blank lines between stanzas).
+- If multiple poems appear on the same page, return each as a separate array element.
+Return a JSON array where each element represents one poem or section:
   { "poemTitle": "string", "text": "string" }
-If there is no English text on this page, return an empty array [].
+If no poem text is found, return [].
 Return only the JSON array — no explanation, no markdown.`
 
 async function ocrFile(filePath: string): Promise<OcrChunk[]> {
@@ -63,7 +71,9 @@ async function ocrFile(filePath: string): Promise<OcrChunk[]> {
     }],
   })
 
-  const text = response.content.find(b => b.type === 'text')?.text ?? '[]'
+  const rawText = response.content.find(b => b.type === 'text')?.text ?? '[]'
+  // Strip markdown code fences if present (```json ... ``` or ``` ... ```)
+  const text = rawText.replace(/^```(?:json)?\s*/m, '').replace(/\s*```\s*$/m, '').trim()
   try {
     const match = text.match(/\[[\s\S]*\]/)
     return match ? (JSON.parse(match[0]) as OcrChunk[]) : []
@@ -109,10 +119,29 @@ async function main() {
       continue
     } catch { /* not yet processed */ }
 
-    console.log(`  Processing ${filename}...`)
+    // Warn on large files before attempting
+    const stat = await fs.stat(filePath)
+    const sizeMB = stat.size / (1024 * 1024)
+    if (sizeMB > 18) {
+      console.log(`  ⚠ ${filename} — ${sizeMB.toFixed(1)}MB, likely too large. Skipping. Split into smaller files and retry.`)
+      continue
+    }
+
+    console.log(`  Processing ${filename} (${sizeMB.toFixed(1)}MB)...`)
     const poetId = poetIdFromFilename(filename)
     const sourcePage = pageNumFromFilename(filename)
-    const chunks = await ocrFile(filePath)
+
+    let chunks: OcrChunk[]
+    try {
+      chunks = await ocrFile(filePath)
+    } catch (err: any) {
+      if (err?.status === 413 || err?.message?.includes('too_large')) {
+        console.log(`  ⚠ ${filename} — too large for API (${sizeMB.toFixed(1)}MB). Split into smaller files and retry.`)
+      } else {
+        console.log(`  ✗ ${filename} — error: ${err?.message ?? err}`)
+      }
+      continue
+    }
 
     const output = chunks.map(c => ({
       poet: poetId,
