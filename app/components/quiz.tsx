@@ -13,19 +13,19 @@ const LYRIC_POOLS = [
     { text: '"I will follow you into the dark"', attribution: 'Death Cab for Cutie' },
     { text: '"Love is a losing game"', attribution: 'Amy Winehouse' },
     { text: '"We found love in a hopeless place"', attribution: 'Rihanna' },
-    { text: '"This is me trying"', attribution: 'Taylor Swift' },
+    { text: '"I was enchanted to meet you"', attribution: 'Taylor Swift' },
   ],
   [
-    { text: '"Take me to church, I\'ll worship like a dog at the shrine of your lies"', attribution: 'Hozier' },
-    { text: '"Never mind, I\'ll find someone like you"', attribution: 'Adele' },
-    { text: '"Do I wanna know if this feeling flows both ways?"', attribution: 'Arctic Monkeys' },
-    { text: '"I never loved nobody fully, always one foot on the ground"', attribution: 'Regina Spektor' },
+    { text: '"I\'ll be the last shred of truth in the lost myth of true love"', attribution: 'Hozier' },
+    { text: '"I\'ve been thinkin\' 'bout you, do you think about me still?"', attribution: 'Frank Ocean' },
+    { text: '"Used to be my baby, you look like my lover but you act like my enemy"', attribution: 'SZA' },
+    { text: '"When the world is cold, I will feel a glow just thinking of you"', attribution: 'Frank Sinatra' },
   ],
   [
     { text: '"How long will I love you? As long as stars are above you"', attribution: 'Ellie Goulding' },
-    { text: '"When you\'re dreaming with a broken heart, the waking up is the hardest part"', attribution: 'John Mayer' },
     { text: '"All of me loves all of you, all your curves and all your edges"', attribution: 'John Legend' },
-    { text: '"She\'s got you high and you don\'t even know yet"', attribution: 'Mumm-Ra' },
+    { text: '"I need you to be here, not right now but always"', attribution: 'Daniel Caesar' },
+    { text: '"I may not always love you, but long as there are stars above you, you never need to doubt it"', attribution: 'The Beach Boys' },
   ],
 ]
 
