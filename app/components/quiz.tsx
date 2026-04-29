@@ -263,10 +263,7 @@ function LoadingScreen() {
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen px-6 text-center space-y-10">
-      <div className="candle-container">
-        <div className="candle-flame" />
-        <div className="candle-body" />
-      </div>
+      <span className="loading-ornament">✦</span>
       <div
         className="text-xl font-light italic transition-opacity duration-300"
         style={{ color: 'var(--color-ink)', opacity: fade ? 0.8 : 0 }}

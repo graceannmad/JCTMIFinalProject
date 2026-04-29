@@ -27,39 +27,18 @@ body {
   font-size: 18px;
 }
 
-/* ── Candle loading animation ─────────────────────────────────── */
+/* ── Loading ornament animation ───────────────────────────────── */
 
-.candle-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0;
+.loading-ornament {
+  font-size: 3.5rem;
+  color: var(--color-gold);
+  animation: ornamentPulse 2.4s ease-in-out infinite;
+  display: inline-block;
+  text-shadow: 0 0 24px rgba(201, 168, 76, 0.5), 0 0 48px rgba(201, 168, 76, 0.2);
 }
 
-.candle-flame {
-  width: 18px;
-  height: 28px;
-  background: radial-gradient(ellipse at 50% 80%, #fff8a0 0%, #f5c242 40%, #c9a84c 70%, transparent 100%);
-  border-radius: 50% 50% 30% 30% / 60% 60% 40% 40%;
-  animation: flicker 1.8s ease-in-out infinite;
-  transform-origin: 50% 100%;
-  box-shadow: 0 0 10px 4px rgba(201, 168, 76, 0.35);
-  margin-bottom: -2px;
-}
-
-.candle-body {
-  width: 20px;
-  height: 56px;
-  background: linear-gradient(to bottom, #f5ead8 0%, #e8d5b7 40%, #d4b896 100%);
-  border-radius: 2px 2px 3px 3px;
-  border: 1px solid var(--color-parchment-dark);
-}
-
-@keyframes flicker {
-  0%   { transform: scaleX(1)    scaleY(1)    rotate(-1deg); opacity: 1;    }
-  20%  { transform: scaleX(1.06) scaleY(0.97) rotate(1.5deg); opacity: 0.95; }
-  40%  { transform: scaleX(0.94) scaleY(1.04) rotate(-0.5deg); opacity: 1;  }
-  60%  { transform: scaleX(1.08) scaleY(0.96) rotate(1deg);  opacity: 0.9;  }
-  80%  { transform: scaleX(0.96) scaleY(1.02) rotate(-1deg); opacity: 0.97; }
-  100% { transform: scaleX(1)    scaleY(1)    rotate(-1deg); opacity: 1;    }
+@keyframes ornamentPulse {
+  0%   { transform: scale(1);    opacity: 0.7; }
+  50%  { transform: scale(1.18); opacity: 1;   }
+  100% { transform: scale(1);    opacity: 0.7; }
 }
