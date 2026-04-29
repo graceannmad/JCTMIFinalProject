@@ -454,8 +454,9 @@ export default function QuizApp({ bypassResult }: { bypassResult?: ResultsPayloa
       <main className="flex flex-col items-center justify-center min-h-screen px-6 py-16 text-center">
         <div className={`max-w-xl mx-auto space-y-8 ${wrapperClass}`}>
           <p className="text-2xl tracking-widest" style={{ color: 'var(--color-gold)' }}>✦ ✦ ✦</p>
-          <h1 className="text-5xl md:text-6xl font-light italic" style={{ color: 'var(--color-burgundy)' }}>
-            The Poet&apos;s Ear
+          <h1 className="text-4xl md:text-5xl font-light italic leading-tight" style={{ color: 'var(--color-burgundy)' }}>
+            From the Poets of Medieval Iberia:
+            <br />Your Playlist
           </h1>
           <p className="text-2xl md:text-3xl font-light leading-relaxed" style={{ color: 'var(--color-ink)' }}>
             Your music speaks a language older than you know.

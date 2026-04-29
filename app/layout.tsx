@@ -10,7 +10,7 @@ const cormorant = Cormorant_Garamond({
 });
 
 export const metadata: Metadata = {
-  title: "The Poet's Ear — Find Your Medieval Match",
+  title: "From the Poets of Medieval Iberia: Your Playlist",
   description:
     "Discover which medieval Iberian love poet shares your musical soul. Take the quiz and receive a playlist curated just for you.",
 };
