@@ -22,13 +22,24 @@ async function getToken(): Promise<string> {
   const data = await res.json()
   cachedToken = {
     value: data.access_token,
-    // Refresh a minute early to avoid edge-of-expiry failures
     expiresAt: Date.now() + (data.expires_in - 60) * 1000,
   }
   return cachedToken.value
 }
 
-// Returns the direct Spotify track URL, or null if not found
+// Check whether the Spotify track's artist(s) reasonably match the claimed artist.
+// Uses substring matching in both directions to handle partial names and features.
+function artistMatches(claimed: string, spotifyArtists: string[]): boolean {
+  const norm = (s: string) => s.toLowerCase().replace(/[^a-z0-9]/g, '')
+  const claimedNorm = norm(claimed)
+  return spotifyArtists.some(a => {
+    const aNorm = norm(a)
+    return aNorm.includes(claimedNorm) || claimedNorm.includes(aNorm)
+  })
+}
+
+// Returns the direct Spotify track URL if the track exists AND the artist matches,
+// or null if not found or the artist is wrong.
 export async function verifyTrack(
   title: string,
   artist: string
@@ -44,19 +55,30 @@ export async function verifyTrack(
     )
     if (res1.ok) {
       const d1 = await res1.json()
-      const url = d1.tracks?.items?.[0]?.external_urls?.spotify
-      if (url) return url
+      const track = d1.tracks?.items?.[0]
+      if (track) {
+        const spotifyArtists: string[] = track.artists.map((a: { name: string }) => a.name)
+        if (artistMatches(artist, spotifyArtists)) {
+          return track.external_urls.spotify
+        }
+      }
     }
 
-    // Attempt 2: broad search fallback
+    // Attempt 2: broad search — only accept if artist still matches
     const q2 = encodeURIComponent(`${title} ${artist}`)
     const res2 = await fetch(
-      `https://api.spotify.com/v1/search?q=${q2}&type=track&limit=1`,
+      `https://api.spotify.com/v1/search?q=${q2}&type=track&limit=3`,
       { headers: { Authorization: `Bearer ${token}` } }
     )
     if (res2.ok) {
       const d2 = await res2.json()
-      return d2.tracks?.items?.[0]?.external_urls?.spotify ?? null
+      const tracks: any[] = d2.tracks?.items ?? []
+      for (const track of tracks) {
+        const spotifyArtists: string[] = track.artists.map((a: { name: string }) => a.name)
+        if (artistMatches(artist, spotifyArtists)) {
+          return track.external_urls.spotify
+        }
+      }
     }
 
     return null
