@@ -137,8 +137,8 @@ function TextQuestion({
         <button
           onClick={onSubmit}
           disabled={!value.trim()}
-          className="px-10 py-3 text-lg font-medium border-2 rounded-sm transition-all duration-200 disabled:opacity-30 disabled:cursor-not-allowed hover:opacity-80"
-          style={{ borderColor: 'var(--color-burgundy)', color: 'var(--color-burgundy)' }}
+          className="px-10 py-3 text-lg font-medium rounded-sm transition-all duration-200 disabled:opacity-30 disabled:cursor-not-allowed hover:opacity-90"
+          style={{ backgroundColor: 'var(--color-burgundy)', color: '#f5ead8' }}
         >
           Continue →
         </button>
@@ -190,7 +190,7 @@ function CardQuestion({
             >
               <span className="text-lg leading-relaxed italic">{text}</span>
               {showAttribution && attribution && (
-                <span className="block text-sm mt-1 not-italic opacity-60">{attribution}</span>
+                <span className="block text-sm mt-1 not-italic opacity-80">{attribution}</span>
               )}
             </button>
           )
@@ -241,7 +241,7 @@ function ResultsView({ result, onReset }: { result: ResultsPayload; onReset: () 
         <h1 className="text-5xl md:text-6xl font-light italic" style={{ color: 'var(--color-burgundy)' }}>
           {poet.name}
         </h1>
-        <p className="text-base opacity-60">{poet.dates}</p>
+        <p className="text-base opacity-80">{poet.dates}</p>
       </div>
 
       <Ornament />
@@ -437,7 +437,7 @@ export default function QuizApp({ bypassResult }: { bypassResult?: ResultsPayloa
           >
             Begin the Quiz
           </button>
-          <p className="text-sm opacity-50" style={{ color: 'var(--color-ink)' }}>Five questions · Two minutes</p>
+          <p className="text-sm opacity-70" style={{ color: 'var(--color-ink)' }}>Five questions · Two minutes</p>
         </div>
       </main>
     )
