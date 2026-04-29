@@ -173,7 +173,7 @@ Speak directly to this modern person in warm, first-person modern English — as
     messages: [
       {
         role: 'user',
-        content: `Build a playlist of 8-10 songs for this person, curated through your poetic sensibility — not just a mirror of their taste. Choose songs they may not know yet. Each artist must appear at most once. Use the generate_playlist tool.\n\n${userTaste}`,
+        content: `Build a playlist of 8-10 songs for this person, curated through your poetic sensibility — not just a mirror of their taste. Choose songs they may not know yet. Each artist must appear at most once. Every field in each playlist item must contain only the requested content — no meta-commentary, self-corrections, or internal notes. Use the generate_playlist tool.\n\n${userTaste}`,
       },
     ],
     tools: [generatePlaylistTool],

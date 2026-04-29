@@ -67,6 +67,12 @@ export async function POST(
       finalPlaylist = [...verified, ...reverified.filter(r => r.spotifyUrl)]
     }
 
+    // Drop any items where the title looks like Claude commentary rather than a real song
+    const COMMENTARY_PATTERNS = /^(wait|actually|let me|i already|note:|sorry|oops|hmm|instead|replacing)/i
+    finalPlaylist = finalPlaylist.filter(item =>
+      item.title.length <= 120 && !COMMENTARY_PATTERNS.test(item.title.trim())
+    )
+
     // Deduplicate by artist — keep first occurrence only
     const seenArtists = new Set<string>()
     finalPlaylist = finalPlaylist.filter(item => {
