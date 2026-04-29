@@ -292,7 +292,7 @@ function ResultsView({ result, onReset }: { result: ResultsPayload; onReset: () 
                 className="shrink-0 text-sm px-3 py-1.5 rounded-full border font-medium transition-opacity hover:opacity-70 whitespace-nowrap"
                 style={{ borderColor: 'var(--color-teal)', color: 'var(--color-teal)' }}
               >
-                Spotify ↗
+                Spotify
               </a>
             </div>
             <p className="text-base leading-relaxed italic opacity-80" style={{ color: 'var(--color-ink)' }}>
