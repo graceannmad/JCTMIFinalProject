@@ -2,34 +2,80 @@
 
 import { useState, useEffect, useCallback } from 'react'
 import type { ResultsPayload } from '@/lib/types'
+import corpusData from '@/data/corpus.json'
+import poetsData from '@/data/poets.json'
 
 // ─── Quiz content ────────────────────────────────────────────────────────────
 
-const LYRIC_OPTIONS = [
-  { text: '"I will follow you into the dark"', attribution: 'Death Cab for Cutie' },
-  { text: '"Love is a losing game"', attribution: 'Amy Winehouse' },
-  { text: '"We found love in a hopeless place"', attribution: 'Rihanna' },
-  { text: '"This is me trying"', attribution: 'Taylor Swift' },
+// Three pools for Q3 — one is picked randomly each session
+const LYRIC_POOLS = [
+  [
+    { text: '"I will follow you into the dark"', attribution: 'Death Cab for Cutie' },
+    { text: '"Love is a losing game"', attribution: 'Amy Winehouse' },
+    { text: '"We found love in a hopeless place"', attribution: 'Rihanna' },
+    { text: '"This is me trying"', attribution: 'Taylor Swift' },
+  ],
+  [
+    { text: '"Take me to church, I\'ll worship like a dog at the shrine of your lies"', attribution: 'Hozier' },
+    { text: '"Never mind, I\'ll find someone like you"', attribution: 'Adele' },
+    { text: '"Do I wanna know if this feeling flows both ways?"', attribution: 'Arctic Monkeys' },
+    { text: '"I never loved nobody fully, always one foot on the ground"', attribution: 'Regina Spektor' },
+  ],
+  [
+    { text: '"How long will I love you? As long as stars are above you"', attribution: 'Ellie Goulding' },
+    { text: '"When you\'re dreaming with a broken heart, the waking up is the hardest part"', attribution: 'John Mayer' },
+    { text: '"All of me loves all of you, all your curves and all your edges"', attribution: 'John Legend' },
+    { text: '"She\'s got you high and you don\'t even know yet"', attribution: 'Mumm-Ra' },
+  ],
 ]
 
-const EXCERPT_OPTIONS = [
-  {
-    text: '"I do not know if my heart has come to a stop between my ribs, or else has wandered off with you."',
-    attribution: 'medieval Iberian love poetry',
-  },
-  {
-    text: '"I asked the sage: what is love? He said: an illness with no physician, a riddle with no answer — except the answer is always yes."',
-    attribution: 'medieval Iberian love poetry',
-  },
-  {
-    text: '"Alas, I thought I knew so much of love, and I know so little — for I cannot keep myself from loving her who will give me nothing in return."',
-    attribution: 'medieval Iberian love poetry',
-  },
-  {
-    text: '"Your face is the full moon; your eyes, those of desert gazelles. Uniquely blessed — you have the body of a boy, yet you flirt like a girl."',
-    attribution: 'medieval Iberian love poetry',
-  },
-]
+// Poet display names lookup
+const POET_NAMES: Record<string, string> = Object.fromEntries(
+  poetsData.map((p: { id: string; name: string }) => [p.id, p.name])
+)
+
+// Extract a clean single-thought excerpt from a corpus chunk
+function getExcerpt(text: string, maxLen = 170): string {
+  // Strip section tags like [Verse 1], [Chorus]
+  const cleaned = text.replace(/\[.*?\]\n?/g, '').trim()
+  if (cleaned.length <= maxLen) return cleaned
+  const trimmed = cleaned.slice(0, maxLen)
+  // End at the last natural break after at least 60 chars
+  const breaks = ['\n', '. ', '? ', '! ', ', ']
+    .map(sep => trimmed.lastIndexOf(sep))
+    .filter(i => i > 60)
+  const breakAt = breaks.length ? Math.max(...breaks) + 1 : trimmed.length
+  return trimmed.slice(0, breakAt).trim()
+}
+
+// Build Q4 options by sampling one chunk from each of 4 randomly chosen poets
+function pickExcerptOptions(): Array<{ text: string; attribution: string }> {
+  type Chunk = { poet: string; text: string; poemTitle?: string }
+  const usable = (corpusData as Chunk[]).filter(c => {
+    const clean = c.text.replace(/\[.*?\]\n?/g, '').trim()
+    return clean.length >= 60
+  })
+
+  // Group by poet
+  const byPoet: Record<string, Chunk[]> = {}
+  for (const chunk of usable) {
+    if (!byPoet[chunk.poet]) byPoet[chunk.poet] = []
+    byPoet[chunk.poet].push(chunk)
+  }
+
+  // Shuffle poets and pick 4
+  const poets = Object.keys(byPoet).sort(() => Math.random() - 0.5).slice(0, 4)
+
+  return poets.map(poetId => {
+    const chunks = byPoet[poetId]
+    const chunk = chunks[Math.floor(Math.random() * chunks.length)]
+    const excerpt = getExcerpt(chunk.text)
+    return {
+      text: `"${excerpt}"`,
+      attribution: POET_NAMES[poetId] ?? poetId,
+    }
+  })
+}
 
 const MOOD_OPTIONS = [
   'Aching and overwhelmed — love is a tide that carries me',
@@ -332,6 +378,9 @@ export default function QuizApp({ bypassResult }: { bypassResult?: ResultsPayloa
   const [result, setResult] = useState<ResultsPayload | null>(bypassResult ?? null)
   const [errorMsg, setErrorMsg] = useState('')
   const [animating, setAnimating] = useState(false)
+  // Picked once at mount — different each session
+  const [lyricOptions] = useState(() => LYRIC_POOLS[Math.floor(Math.random() * LYRIC_POOLS.length)])
+  const [excerptOptions] = useState(() => pickExcerptOptions())
 
   function advance(nextStage: Stage) {
     setAnimating(true)
@@ -484,7 +533,7 @@ export default function QuizApp({ bypassResult }: { bypassResult?: ResultsPayloa
         {qIndex === 2 && (
           <CardQuestion
             label="Which lyric speaks to you most?"
-            options={LYRIC_OPTIONS}
+            options={lyricOptions}
             onSelect={v => {
               setAnswers(a => ({ ...a, lyricChoice: v }))
               advance(3)
@@ -496,7 +545,7 @@ export default function QuizApp({ bypassResult }: { bypassResult?: ResultsPayloa
         {qIndex === 3 && (
           <CardQuestion
             label="Which line of poetry reaches you?"
-            options={EXCERPT_OPTIONS}
+            options={excerptOptions}
             onSelect={v => {
               setAnswers(a => ({ ...a, excerptChoice: v }))
               advance(4)
