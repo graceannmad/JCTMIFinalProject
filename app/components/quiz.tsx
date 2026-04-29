@@ -464,11 +464,6 @@ export default function QuizApp({ bypassResult }: { bypassResult?: ResultsPayloa
             <span className="italic">Find the medieval poet who speaks it too.</span>
           </p>
           <Ornament />
-          <p className="text-lg leading-relaxed opacity-75" style={{ color: 'var(--color-ink)' }}>
-            Tell us who you listen to. We&apos;ll find you a poet from 11th‑century
-            Al‑Andalus who thought about love exactly the way you do — and they&apos;ll
-            build you a playlist.
-          </p>
           <button
             onClick={() => advance(0)}
             className="mt-4 px-10 py-4 text-xl font-medium rounded-sm border-2 transition-all duration-200 hover:opacity-80"
