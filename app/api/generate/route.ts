@@ -72,7 +72,7 @@ export async function POST(
     return NextResponse.json({
       poet,
       matchExplanation: generated.matchExplanation,
-      historicalContext: generated.historicalContext,
+      historicalContext: poet.context,
       playlist: finalPlaylist,
     })
   } catch (err) {

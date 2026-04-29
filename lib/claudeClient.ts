@@ -24,17 +24,13 @@ const matchPoetTool: Anthropic.Tool = {
 
 const generatePlaylistTool: Anthropic.Tool = {
   name: 'generate_playlist',
-  description: 'Return match explanation, historical context, and playlist in the poet\'s first-person voice.',
+  description: 'Return match explanation and playlist in the poet\'s first-person voice.',
   input_schema: {
     type: 'object',
     properties: {
       matchExplanation: {
         type: 'string',
         description: '~150 words in first-person poet voice explaining why the user was matched.',
-      },
-      historicalContext: {
-        type: 'string',
-        description: '2-3 sentences of historical context about the poet.',
       },
       playlist: {
         type: 'array',
@@ -58,7 +54,7 @@ const generatePlaylistTool: Anthropic.Tool = {
         maxItems: 10,
       },
     },
-    required: ['matchExplanation', 'historicalContext', 'playlist'],
+    required: ['matchExplanation', 'playlist'],
   },
 }
 
@@ -149,7 +145,7 @@ export async function generatePlaylist(
   corpus: CorpusChunk[],
   quiz: QuizInput,
   lyrics: LyricsData
-): Promise<Omit<ResultsPayload, 'poet'>> {
+): Promise<Omit<ResultsPayload, 'poet' | 'historicalContext'>> {
   const poetChunks = corpus.filter(c => c.poet === poet.id)
   const poetExcerpts = poetChunks
     .map(c => `"${c.poemTitle}":\n${c.text}`)
@@ -191,7 +187,6 @@ Speak directly to this modern person in warm, first-person modern English — as
 
   const result = toolUse.input as {
     matchExplanation: string
-    historicalContext: string
     playlist: Array<{
       title: string
       artist: string
@@ -202,10 +197,9 @@ Speak directly to this modern person in warm, first-person modern English — as
 
   return {
     matchExplanation: result.matchExplanation,
-    historicalContext: result.historicalContext,
     playlist: result.playlist.map(item => ({
       ...item,
-      spotifyUrl: '', // filled in by Spotify verification step
+      spotifyUrl: '',
       poemReference: item.poemReference ?? null,
     })),
   }
