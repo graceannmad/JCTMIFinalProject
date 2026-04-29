@@ -67,6 +67,15 @@ export async function POST(
       finalPlaylist = [...verified, ...reverified.filter(r => r.spotifyUrl)]
     }
 
+    // Deduplicate by artist — keep first occurrence only
+    const seenArtists = new Set<string>()
+    finalPlaylist = finalPlaylist.filter(item => {
+      const key = item.artist.toLowerCase().trim()
+      if (seenArtists.has(key)) return false
+      seenArtists.add(key)
+      return true
+    })
+
     clearTimeout(timeoutHandle)
 
     return NextResponse.json({
