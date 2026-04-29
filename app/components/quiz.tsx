@@ -17,7 +17,7 @@ const LYRIC_POOLS = [
   ],
   [
     { text: '"I\'ll be the last shred of truth in the lost myth of true love"', attribution: 'Hozier' },
-    { text: '"I\'ve been thinkin\' 'bout you, do you think about me still?"', attribution: 'Frank Ocean' },
+    { text: '"I\'ve been thinkin\' \'bout you, do you think about me still?"', attribution: 'Frank Ocean' },
     { text: '"Used to be my baby, you look like my lover but you act like my enemy"', attribution: 'SZA' },
     { text: '"When the world is cold, I will feel a glow just thinking of you"', attribution: 'Frank Sinatra' },
   ],
