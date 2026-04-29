@@ -349,7 +349,7 @@ function ResultsView({ result, onReset }: { result: ResultsPayload; onReset: () 
                 className="text-sm opacity-60 border-l-2 pl-3 leading-relaxed"
                 style={{ borderColor: 'var(--color-gold)', color: 'var(--color-ink)' }}
               >
-                {item.poemReference}
+                {item.poemReference.replace(/^["'"']+|["'"']+$/g, '').trim()}
               </p>
             )}
           </div>

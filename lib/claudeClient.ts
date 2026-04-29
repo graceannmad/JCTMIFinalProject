@@ -1,5 +1,5 @@
 import Anthropic from '@anthropic-ai/sdk'
-import type { CorpusChunk, PoetProfile, QuizInput, LyricsData, PlaylistItem, ResultsPayload } from './types'
+import type { CorpusChunk, PoetProfile, QuizInput, LyricsData, ResultsPayload } from './types'
 
 const anthropic = new Anthropic()
 
@@ -45,7 +45,7 @@ const generatePlaylistTool: Anthropic.Tool = {
             },
             poemReference: {
               type: 'string',
-              description: 'Optional short quote from one of the poet\'s own poems.',
+              description: 'Optional short excerpt from one of the poet\'s own poems. Do not wrap in quotation marks.',
             },
           },
           required: ['title', 'artist', 'justification'],
