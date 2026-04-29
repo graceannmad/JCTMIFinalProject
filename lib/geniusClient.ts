@@ -49,11 +49,17 @@ async function scrapeLyrics(url: string): Promise<string> {
     const $ = cheerio.load(html)
     const parts: string[] = []
     $('[data-lyrics-container="true"]').each((_, el) => {
-      // Replace <br> with newlines before extracting text
       $(el).find('br').replaceWith('\n')
       parts.push($(el).text().trim())
     })
-    return parts.join('\n\n').slice(0, 3000) // cap to avoid token explosion
+    const raw = parts.join('\n\n')
+
+    // Genius prepends metadata (contributor counts, translation links, description)
+    // before the lyrics. Strip everything before the first structural section tag.
+    const tagMatch = raw.search(/\[(?:Verse|Chorus|Intro|Outro|Bridge|Hook|Pre-Chorus|Post-Chorus|Refrain)\b/)
+    const lyrics = tagMatch !== -1 ? raw.slice(tagMatch).trim() : raw.trim()
+
+    return lyrics.slice(0, 3000)
   } catch {
     return ''
   }
@@ -63,21 +69,17 @@ export async function fetchLyricsData(
   artist: string,
   song?: string
 ): Promise<LyricsData> {
-  // Find artist from search results
   const hits = await searchGenius(artist)
   if (!hits.length) return { artistLyrics: [], geniusMiss: true }
 
-  const artistId: number | undefined =
-    hits[0]?.result?.primary_artist?.id
+  const artistId: number | undefined = hits[0]?.result?.primary_artist?.id
   if (!artistId) return { artistLyrics: [], geniusMiss: true }
 
-  // Fetch top songs and scrape lyrics (limit to 3 for speed)
   const topSongs = await getArtistTopSongs(artistId)
   const artistLyrics = (
     await Promise.all(topSongs.slice(0, 3).map((s: any) => scrapeLyrics(s.url)))
   ).filter(Boolean)
 
-  // Specific song lyrics
   let songLyrics: string | undefined
   if (song) {
     const songHits = await searchGenius(`${artist} ${song}`)

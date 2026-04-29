@@ -4,7 +4,8 @@
   --color-parchment: #f5ead8;
   --color-ink: #2c1810;
   --color-burgundy: #6b2737;
-  --color-gold: #c9a84c;
+  --color-gold: #c9a84c;        /* decorative only — ornaments, borders, accents */
+  --color-label: #7a5210;       /* readable gold-brown for text labels */
   --color-teal: #1a5276;
   --color-parchment-dark: #e8d5b7;
 }
@@ -14,6 +15,7 @@
   --color-ink: var(--color-ink);
   --color-burgundy: var(--color-burgundy);
   --color-gold: var(--color-gold);
+  --color-label: var(--color-label);
   --color-teal: var(--color-teal);
   --font-serif: var(--font-cormorant), Georgia, "Times New Roman", serif;
 }
@@ -22,10 +24,42 @@ body {
   background-color: var(--color-parchment);
   color: var(--color-ink);
   font-family: var(--font-cormorant), Georgia, "Times New Roman", serif;
+  font-size: 18px;
 }
 
-.ornament {
-  text-align: center;
-  color: var(--color-gold);
-  letter-spacing: 0.5em;
+/* ── Candle loading animation ─────────────────────────────────── */
+
+.candle-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+}
+
+.candle-flame {
+  width: 18px;
+  height: 28px;
+  background: radial-gradient(ellipse at 50% 80%, #fff8a0 0%, #f5c242 40%, #c9a84c 70%, transparent 100%);
+  border-radius: 50% 50% 30% 30% / 60% 60% 40% 40%;
+  animation: flicker 1.8s ease-in-out infinite;
+  transform-origin: 50% 100%;
+  box-shadow: 0 0 10px 4px rgba(201, 168, 76, 0.35);
+  margin-bottom: -2px;
+}
+
+.candle-body {
+  width: 20px;
+  height: 56px;
+  background: linear-gradient(to bottom, #f5ead8 0%, #e8d5b7 40%, #d4b896 100%);
+  border-radius: 2px 2px 3px 3px;
+  border: 1px solid var(--color-parchment-dark);
+}
+
+@keyframes flicker {
+  0%   { transform: scaleX(1)    scaleY(1)    rotate(-1deg); opacity: 1;    }
+  20%  { transform: scaleX(1.06) scaleY(0.97) rotate(1.5deg); opacity: 0.95; }
+  40%  { transform: scaleX(0.94) scaleY(1.04) rotate(-0.5deg); opacity: 1;  }
+  60%  { transform: scaleX(1.08) scaleY(0.96) rotate(1deg);  opacity: 0.9;  }
+  80%  { transform: scaleX(0.96) scaleY(1.02) rotate(-1deg); opacity: 0.97; }
+  100% { transform: scaleX(1)    scaleY(1)    rotate(-1deg); opacity: 1;    }
 }

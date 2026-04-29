@@ -62,10 +62,24 @@ const generatePlaylistTool: Anthropic.Tool = {
   },
 }
 
-function buildCorpusContext(corpus: CorpusChunk[], poets: PoetProfile[]): string {
+// Cap chunks per poet so no single poet dominates the matching context
+// regardless of how many chunks their corpus has.
+const MATCH_CHUNKS_PER_POET = 5
+
+function buildCorpusContext(
+  corpus: CorpusChunk[],
+  poets: PoetProfile[],
+  maxChunksPerPoet = MATCH_CHUNKS_PER_POET
+): string {
   return poets
     .map(p => {
-      const chunks = corpus.filter(c => c.poet === p.id)
+      const allChunks = corpus.filter(c => c.poet === p.id)
+      // Space chunks evenly across the corpus so we sample different poems
+      // rather than always taking the first N.
+      const step = allChunks.length <= maxChunksPerPoet
+        ? 1
+        : Math.floor(allChunks.length / maxChunksPerPoet)
+      const chunks = allChunks.filter((_, i) => i % step === 0).slice(0, maxChunksPerPoet)
       const excerpts = chunks
         .map(c => `[${c.poemTitle}]\n${c.text}`)
         .join('\n\n---\n\n')
