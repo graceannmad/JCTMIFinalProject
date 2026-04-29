@@ -341,14 +341,6 @@ function ResultsView({ result, onReset }: { result: ResultsPayload; onReset: () 
             <p className="text-base leading-relaxed italic opacity-80" style={{ color: 'var(--color-ink)' }}>
               {item.justification}
             </p>
-            {item.poemReference && (
-              <p
-                className="text-sm opacity-60 border-l-2 pl-3 leading-relaxed"
-                style={{ borderColor: 'var(--color-gold)', color: 'var(--color-ink)' }}
-              >
-                {item.poemReference.replace(/^["'"']+|["'"']+$/g, '').trim()}
-              </p>
-            )}
           </div>
         ))}
       </section>
