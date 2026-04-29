@@ -296,7 +296,7 @@ function ResultsView({ result, onReset }: { result: ResultsPayload; onReset: () 
       <section className="space-y-4">
         <SectionLabel>A message from {poet.name}</SectionLabel>
         <p className="text-xl font-light leading-relaxed italic" style={{ color: 'var(--color-ink)' }}>
-          &ldquo;{matchExplanation}&rdquo;
+          {matchExplanation}
         </p>
       </section>
 
@@ -506,7 +506,7 @@ export default function QuizApp({ bypassResult }: { bypassResult?: ResultsPayloa
         {qIndex === 0 && (
           <TextQuestion
             label="Who is your favourite artist right now?"
-            placeholder="e.g. Mitski, Frank Ocean, Sufjan Stevens…"
+            placeholder=""
             value={inputVal}
             onChange={setInputVal}
             onSubmit={() => {
